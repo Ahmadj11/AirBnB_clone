@@ -10,4 +10,3 @@ class BaseModel:
     """Defines all common attributes & methods for AirBnB classes"""
     def __init__(self, id, created_at, updated_at):
         self.id =  str(uuid.uuid4())
-        
