@@ -1,9 +1,12 @@
 #!/usr/bin/python3
-"""
-Module containing the base class.
-"""
+"""BaseModel class module that all AirBnB classes will inherit from"""
+
 
 import json
-import os 
+import uuid
 
-class BaseModel
+
+class BaseModel:
+    """Defines all common attributes & methods for AirBnB classes"""
+    def __init__(self, id, created_at, updated_at):
+        self.id =  str(uuid.uuid4())
