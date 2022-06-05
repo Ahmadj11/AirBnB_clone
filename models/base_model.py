@@ -17,7 +17,12 @@ class BaseModel:
         # variable to help convert str back to datetime object
         formatcode = "%Y-%m-%dT%H:%M:%S.%f"
         # if given a dictionary create an instance of BaseModel
-        if kwargs is not None:
+        id = str(uuid.uuid4())
+        self.id = id
+        created_at = datetime.now()
+        self.created_at = created_at
+        self.updated_at = created_at
+        if kwargs is not None and args is None:
             for key, value in kwargs.items():
                 if key not in valid_attr:
                     pass
@@ -27,11 +32,12 @@ class BaseModel:
                     self.created_at = datetime.strptime(value, formatcode)
                 if key == 'updated_at':
                     self.updated_at = datetime.strptime(value, formatcode)
-        id = str(uuid.uuid4())  # generates random UUID
-        self.id = id
-        created_at = datetime.now()
-        self.created_at = created_at
-        self.updated_at = created_at
+        # otherwise create instance through assignment
+        # id = str(uuid.uuid4())  # generates random UUID
+        # self.id = id
+        # created_at = datetime.now()
+        # self.created_at = created_at
+        # self.updated_at = created_at
 
     def __str__(self):
         """overwriting __str__ method to print object how we would like"""
