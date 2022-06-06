@@ -6,6 +6,8 @@ import json
 import uuid
 from datetime import datetime
 import time
+# first step in linking BaseModel to FileStorage through variable storage
+from models.__init__ import storage
 
 
 class BaseModel:
@@ -16,12 +18,13 @@ class BaseModel:
         valid_attr = ['id', 'created_at', 'updated_at']
         # variable to help convert str back to datetime object
         formatcode = "%Y-%m-%dT%H:%M:%S.%f"
-        # if given a dictionary create an instance of BaseModel
+        # creating new instance attr first because kept getting error about id
         id = str(uuid.uuid4())
         self.id = id
         created_at = datetime.now()
         self.created_at = created_at
         self.updated_at = created_at
+        # if given a dictionary **kwargs create instance with this instead
         if kwargs is not None and args is None:
             for key, value in kwargs.items():
                 if key not in valid_attr:
@@ -32,6 +35,8 @@ class BaseModel:
                     self.created_at = datetime.strptime(value, formatcode)
                 if key == 'updated_at':
                     self.updated_at = datetime.strptime(value, formatcode)
+        else:  # because nothing was created with kwargs call new() on storage
+            storage.new(self)
         # otherwise create instance through assignment
         # id = str(uuid.uuid4())  # generates random UUID
         # self.id = id
@@ -48,6 +53,7 @@ class BaseModel:
         """update updated_at attr w/ current date time"""
         currentdt = datetime.now()
         self.updated_at = currentdt
+        storage.save()  # call save(self) method on storage
 
     def to_dict(self):
         """create & return dictionary of instance attributes"""
