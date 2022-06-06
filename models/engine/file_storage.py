@@ -3,7 +3,7 @@
 
 
 import json
-
+# from models.base_model import BaseModel
 
 class FileStorage:
     """defines class that helps w/ deserialization/serialization of objects"""
@@ -17,13 +17,16 @@ class FileStorage:
 
     def new(self, obj):
         """adds obj to __objects with <obj class name>.id as key"""
-        self.__objects["obj.__class__.__name__.id"] = obj
+        self.__objects["{}.{}".format(type(obj).__name__, obj.id)] = obj
 
     def save(self):
         """serializes __objects to JSON file __file_path"""
         # fix error that class is not serializable json object
+        jobject = {}  # create empty dictionary to hold class dictionary
+        for key, value in self.__objects.items():  # start iterating thru dict
+            jobject[key] = value.to_dict()
         with open(self.__file_path, 'w', encoding="utf-8") as jfile:
-            json.dump(self.__objects, jfile)
+            json.dump(jobject, jfile)
 
     def reload(self):
         """deserializes JSON file to __objects if __file_path exists"""
@@ -36,6 +39,8 @@ class FileStorage:
         except:
             pass
 
+# importing at end of file prevent circular import error for partial initiali.
+# from models.base_model import BaseModel
     # coommenting out next 3 lines b/c not needed & return not correct
     # def __init__(self):
     # self.__objects = __objects
