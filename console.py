@@ -1,9 +1,12 @@
 #!/usr/bin/python3
+"""command interpreter to manage AirBnb objects"""
+
 import cmd
 import sys
 
+
 class HBNBCommand(cmd.Cmd):
-    'promt for the command line'
+    """defines command interpreter class"""
     prompt = '(hbnb)'
     file = None
 
