@@ -3,13 +3,13 @@
 
 import cmd
 # import sys
-
+from models.base_model import BaseModel
+from models.engine.file_storage import FileStorage
 
 class HBNBCommand(cmd.Cmd):
     """defines command interpreter class"""
     # override default (cmd) prompt with following parent class attr
     prompt = '(hbnb)'
-    # file = None
 
     # the only other parameter of cmd methods represents the args from cmdline
     def do_quit(self, args):
@@ -24,9 +24,20 @@ class HBNBCommand(cmd.Cmd):
         """empty line input executes nothing"""
         pass
 
-    # def create(self, args):
-    # "creates a new instance object"
-    # newmodel = BaseModel()
+    def do_create(self, args):
+        """Create command to create new instance of existing class"""
+        arglst = args.split()
+        if len(arglst) == 0:
+            print ("** class name missing **")
+            return
+        if arglst[0] != "BaseModel":
+            print ("** class doesn't exist **")
+            return
+        else:
+            newinst = BaseModel()
+            newinst.save()
+            print (newinst.id)
+    
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
