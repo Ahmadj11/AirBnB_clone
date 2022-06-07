@@ -4,6 +4,8 @@
 
 import json
 # from models.base_model import BaseModel
+import os.path
+
 
 class FileStorage:
     """defines class that helps w/ deserialization/serialization of objects"""
@@ -24,20 +26,22 @@ class FileStorage:
         # fix error that class is not serializable json object
         jobject = {}  # create empty dictionary to hold class dictionary
         for key, value in self.__objects.items():  # start iterating thru dict
+            # need to make __objects serializable and turn values into dict
             jobject[key] = value.to_dict()
         with open(self.__file_path, 'w', encoding="utf-8") as jfile:
             json.dump(jobject, jfile)
 
     def reload(self):
         """deserializes JSON file to __objects if __file_path exists"""
-        try:  # check json file existence EAFP style bc LBYL gave error
+        file_exists = os.path.exists(self.__file_path)
+        if file_exists:  # check json file existence
             with open(self.__file_path, encoding="utf-8") as jfile:
                 # opened file for reading not read it
                 redfile = jfile.read()
                 # load read json file into  __objects
                 self.__objects = json.loads(redfile)
-        except:
-            pass
+        else:
+            return
 
 # importing at end of file prevent circular import error for partial initiali.
 # from models.base_model import BaseModel
