@@ -37,7 +37,17 @@ class HBNBCommand(cmd.Cmd):
             newinst = BaseModel()
             newinst.save()
             print (newinst.id)
-    
 
+    def do_show(self, args):
+        argslst = args.split()
+        if len(arglst) == 0:
+            print("** class name missing **")
+            return
+        if len(arglst) == 1:
+            print("** instance id missing **")
+            return
+        for value in FileStorage.__objects:
+            if arg[0] != FileStorage.__objects[key]:
+            
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
