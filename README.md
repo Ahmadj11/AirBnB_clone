@@ -36,7 +36,7 @@ successfully starte the CI. Example below:
 <p> All avalaible commands wihin the CI have been
 documented, so you can type the command `help` at the prompt and receive a
 listing of available commands. Example below:
-> (hbnb) help
+> `(hbnb) help`
 <p> In order to get more detail about each command,
 specifically what it does, type `help <command name>` where command name is
 taken from the list that printed to stdout after typing `help`.
