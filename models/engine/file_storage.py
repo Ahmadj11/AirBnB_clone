@@ -44,7 +44,7 @@ class FileStorage:
             return
 
 # importing at end of file prevent circular import error for partial initiali.
-# from models.base_model import BaseModel
+from models.base_model import BaseModel
     # coommenting out next 3 lines b/c not needed & return not correct
     # def __init__(self):
     # self.__objects = __objects
