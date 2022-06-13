@@ -30,17 +30,17 @@ us to manage the objects in our project in the following ways:
 #### Interactive Mode
 In your terminal, type `./console.py` to start our command interpreter (CI) in
 interactive mode. You will see the prompt `(hbnb)` which confirms you have
-successfully starte the CI. Example below
+successfully starte the CI. Example below:
 > `$ ./console.py`
-> '(hbnb)              `
-All avalaible commands wihin the CI have been
+> `(hbnb)`              `
+<p> All avalaible commands wihin the CI have been
 documented, so you can type the command `help` at the prompt and receive a
-listing of available commands. Example below;
+listing of available commands. Example below:
 > (hbnb) help
-In order to get more detail about each command,
+<p> In order to get more detail about each command,
 specifically what it does, type `help <command name>` where command name is
 taken from the list that printed to stdout after typing `help`.
-In order to exit, the CI please not the following example:
+<p> In order to exit, the CI please not the following example:
 > `(hbnb) exit`
 #### Non-Interactive Mode
 Similar to the the BAShell, our command interpreter also works in
