@@ -25,7 +25,7 @@ class FileStorage:
         """serializes __objects to JSON file __file_path"""
         # fix error that class is not serializable json object
         jobject = {}  # create empty dictionary to hold class dictionary
-        for key, value in self.__objects.items():  # start iterating thru dict
+        for key in self.__objects.items():  # start iterating thru dict
             # need to make __objects serializable and turn values into dict
             jobject[key] = value.to_dict()
         with open(self.__file_path, 'w', encoding="utf-8") as jfile:
