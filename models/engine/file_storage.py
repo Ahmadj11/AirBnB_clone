@@ -40,6 +40,7 @@ class FileStorage:
                 redfile = jfile.read()
                 # load read json file into  __objects
                 tempobjects = json.loads(redfile)
+            # create dictionary within dictionary
             for key, value in tempobjects.items():
                 self.__objects[key] = value.to_dict() 
         else:
