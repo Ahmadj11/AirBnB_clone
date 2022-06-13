@@ -39,7 +39,9 @@ class FileStorage:
                 # opened file for reading not read it
                 redfile = jfile.read()
                 # load read json file into  __objects
-                self.__objects = json.loads(redfile)
+                tempobjects = json.loads(redfile)
+            for key, value in tempobjects.items():
+                self.__objects[key] = value.to_dict() 
         else:
             return
 
