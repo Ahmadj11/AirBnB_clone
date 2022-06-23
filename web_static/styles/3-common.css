@@ -1,0 +1,13 @@
+@import"./3-header.css";
+@import"./3-footer.css";
+body {
+    margin: 0;
+    padding: 0;
+    color: #484848;
+    font-family: Circular, "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+html,
+body {
+    min-height: 100%;
+}

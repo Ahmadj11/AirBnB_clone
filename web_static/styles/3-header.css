@@ -1,0 +1,11 @@
+header {
+    color: white;
+    height: 70 px;
+    width: 100%;
+    border-bottom: 1px #ccc;
+}
+
+.logo {
+    float: left -20px;
+    float: center;
+}
