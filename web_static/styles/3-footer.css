@@ -1,10 +1,9 @@
-footer {
-    display: flex;
-    justify-content: center;
-    position: absolute;
-    bottom: 0;
+footer{
+    background-color: white;
     height: 60px;
     width: 100%;
-    border-top: 1px #ccc;
-    align-items: center;
+    border-top: 1px #cccccc;
+    position: fixed;
+    bottom: 0;
 }
+footer p {text-align: center;}
